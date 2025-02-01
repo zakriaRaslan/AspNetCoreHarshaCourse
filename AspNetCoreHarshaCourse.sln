@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoutingSection", "RoutingSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerSection", "ControllerSection\ControllerSection.csproj", "{0818BDD6-A26C-4F83-B5C5-6F817718BFF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelValidationExapmle", "ModelValidationExapmle\ModelValidationExapmle.csproj", "{09D60510-4C52-4836-8A2D-90C88F7A14D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0818BDD6-A26C-4F83-B5C5-6F817718BFF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0818BDD6-A26C-4F83-B5C5-6F817718BFF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0818BDD6-A26C-4F83-B5C5-6F817718BFF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09D60510-4C52-4836-8A2D-90C88F7A14D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09D60510-4C52-4836-8A2D-90C88F7A14D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09D60510-4C52-4836-8A2D-90C88F7A14D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09D60510-4C52-4836-8A2D-90C88F7A14D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
