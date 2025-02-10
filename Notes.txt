@@ -1,0 +1,33 @@
+
+
+
+
+
+
+Section 8 (Razor Pages) 
+* MVC Architecture Pattern is M => Model , V => View , C => For Controller 
+- In razor pages you can write code in html & C# and their extension is .cshtml
+- You write C# code by using inline code like "@" before the C# code 
+- if you need to write block of C# code use @{ C# code }
+- you can use for loop , foreach , if , else and switch 
+- to write literal text in C# block of code you can use @:literal or use Text html tag like <text> </text>
+
+# Local Functions
+ - is a function you create it in a razor page but you cant use it in another razor page use it to don't repeat your self
+ - you can use the local function as a method if you use the block like this @function{ //here the method } but local function used like this @{ // local function }
+ -  in method you can add fields and properties 
+ -  but in the end the views does not used to write functions and methods in it all of this C# code should be written in the controllers
+
+# Html.Raw()
+  * is a method used to render unencoded HTML in your Razor views.
+	It is useful when you need to output HTML markup directly.
+	Use it cautiously, ensuring that any content rendered with it is free from malicious code.
+
+
+(The Two way if using ViewData and ViewBag To transfer data from controller but ViewData ned a type casting but ViewBag doesn't need this )
+
+# View Data
+ * is a dictionary object that is automatically created up on receiving a request and will be automatically deleted before sending response to the client
+	it is mainly used to send data from controller to view
+#ViewBag 
+	this is not a seeprate object it get the data from the ViewData object

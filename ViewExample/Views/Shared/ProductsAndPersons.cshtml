@@ -1,0 +1,35 @@
+﻿@* this page in shared folder you can access it from any controller 
+    to display two different content from two models or more you need to use a wrapper
+    like here we will wrapp the person and product models
+*@
+
+@model PersonAndProductWrapper
+<!Doctype html>
+<html>
+<head>
+    <title>@ViewBag.title</title>
+    <meta charset="utf-8" />
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="page-content w-100">
+         <div class="box float-left w-50">
+                <table class="table w-100">
+                    <tbody>
+                        <tr>
+                            <td>person data</td>
+                            <td>@Model.PersonsData</td>
+                        </tr>
+                        <tr>
+                            <td>Product Data</td>
+                            <td>@Model.ProductsDate</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+     
+    </div>
+</body>
+</html>

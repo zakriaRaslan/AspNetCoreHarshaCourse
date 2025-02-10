@@ -1,0 +1,35 @@
+﻿
+@* this page to display the all products 
+    this is a strongly typed page
+*@
+@model IEnumerable<Product> 
+<!Doctype html>
+<html>
+    <head>
+        <title>@ViewBag.title</title>
+        <meta charset="utf-8" />
+        <link href="~/StyleSheet.css" rel="stylesheet" />
+    </head>
+    <body>
+
+        <div class="page-content w-100">
+      @foreach(Product product in Model){
+        <div class="box float-left w-50">    
+            <table class="table w-100">
+               <tbody>
+                    <tr>
+                        <td>ID</td>  
+                        <td>@product.Id</td>
+                    </tr>
+                    <tr>
+                        <td>Title</td>
+                            <td>@product.title</td>
+                    </tr>
+               </tbody>
+
+            </table>
+        </div>
+      }
+      </div>
+    </body>
+</html>

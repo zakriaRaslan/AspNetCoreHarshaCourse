@@ -1,0 +1,89 @@
+﻿
+@{
+    // string PageTitle = "View Example"; //Get it By ViewData
+
+    Person person = new Person(){
+                Name = "Zakaria",
+                BirthDate = Convert.ToDateTime("1998 - 08 - 10"),
+                PersonGender = Gender.Male
+            };
+
+    // List<Person> pepole = new List<Person>{
+    //     new Person() { Name = "Sayed", BirthDate = Convert.ToDateTime("1995 - 05 - 15") , PersonGender= Gender.Male },
+    //     new Person() { Name = "Fathi", BirthDate = Convert.ToDateTime("2000 - 07 - 20") , PersonGender= Gender.Male },
+    //     new Person() { Name = "Mai",  PersonGender= Gender.Female },
+    // };  //Get it By ViewData
+}
+@{
+    List<Person>? pepole = (List<Person>?)ViewData["pepole"]; 
+    // Local Function
+    double? GetAge(DateTime? BirthDate)
+    {
+        if (BirthDate.HasValue)
+        {
+            return Math.Round((DateTime.Now - BirthDate).Value.TotalDays / 365);
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    string JavaScriptAlert = $"<script>alert('{pepole.Count} person found')</script>";
+}
+@* @functions{
+    // Method
+    double? GetAge(DateTime? BirthDate)
+    {
+        if (BirthDate.HasValue)
+        {
+            return Math.Round((DateTime.Now - BirthDate).Value.TotalDays / 365);
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    int x = 10; // this is field 
+    string Name { get; set; } = "This Name Property ";
+} *@
+
+@* in the end the Razor views should not be used like this all the functions and methods should be written in the controllers*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    @* <title>@ViewData["PageTitle"]</title> *@
+    <title>@ViewBag.PageTitle</title>
+    <meta charset="utf-8" />
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    @* @JavaScriptAlert  *@
+    @* @Html.Raw(JavaScriptAlert) *@ @* this is Working *@
+
+    <h1>Welcome @* @Name *@</h1>
+        
+    @foreach(Person x in pepole){
+        <div class="box float-left w-50">
+            <h3> @x.Name</h3>
+            <table class="table w-100">
+               <tbody>
+                    <tr>
+                        <td>Gender</td>  
+                        <td>@x.PersonGender</td>
+                    </tr>
+                    <tr>
+                        <td>Date Of Birth</td>
+                        <td>@x.BirthDate.Value.ToString("MM/dd/yyyy")</td>
+                    </tr>
+               </tbody>
+
+            </table>
+            
+        </div>
+    }
+    </body>
+
+</html>
