@@ -3,11 +3,30 @@
 }
 
 <h1>Home</h1>
-@await Component.InvokeAsync("Grid") @* this is the traditional way to use the View Component *@
+@* @await Component.InvokeAsync("Grid") *@ 
+
+@* this is the traditional way to use the View Component *@
 @* but you can use the Tag Helpers Like this  *@
 
 
-@* <vc:grid></vc:grid> *@ @* in this way you must write the name of component in small case 
+@* <vc:grid></vc:grid> *@ 
+@* in this way you must write the name of component in small case 
     if the the component Name like "MyGrid" in this case the tag helper will be 
     <vc:my-grid></vc:my-grid>
 *@
+
+@*You Can Send Data From View To The ViewComponent like this but must use a parameter in the invoke method *@
+@{
+    GridPersonModel gridPersonModel = new GridPersonModel()
+            {
+                GridTitle = "Persons List",
+                Persons = new List<Person>()
+                {
+                    new Person(){Name="Sayed" , JopTitle="Back-end Developer"},
+                    new Person(){Name="Yahia" , JopTitle="Full-stack Developer"},
+                    new Person(){Name="Mariam" , JopTitle="Front-end Developer"},
+                    new Person(){Name="Mostafa" , JopTitle="Mobile Developer"},
+                }
+            };
+}
+@await Component.InvokeAsync("Grid",gridPersonModel)

@@ -3,3 +3,21 @@
 }
 
 <h1>About</h1>
+@*
+    Send Another Data From another View To The ViewComponent Like This  
+*@
+@{
+    GridPersonModel gridPersonModel = new GridPersonModel()
+            {
+                GridTitle = "Empoyees List",
+                Persons = new List<Person>()
+                {
+                    new Person(){Name="Ahmed" , JopTitle="Manager"},
+                    new Person(){Name="Aya" , JopTitle="HR"},
+                    new Person(){Name="Mariam" , JopTitle="secretary"},
+                    new Person(){Name="Sayed" , JopTitle="Co.Manager"},
+                }
+            };
+}
+
+<vc:grid grid="gridPersonModel"></vc:grid>
