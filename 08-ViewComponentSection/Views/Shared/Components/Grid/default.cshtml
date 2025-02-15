@@ -1,40 +1,29 @@
-﻿<div class="box">
+﻿@model GridPersonModel
+<div class="box">
+    <h3>@Model.GridTitle</h3>
     <table class="table w-100">
   <thead>
       <tr>
           <td>
-              Student Id
+              Name
           </td>
           <td>
-              Name
+              Jop Title
           </td>
       </tr>
   </thead>
   <tbody>
-      <tr>
-          <td>
-              1
-          </td>
-          <td>
-             Ahmed
-          </td>
-      </tr>
-      <tr>
-          <td>
-              2
-          </td>
-          <td>
-             Sayed
-          </td>
-      </tr>
-      <tr>
-          <td>
-              3
-          </td>
-          <td>
-             Krama
-          </td>
-      </tr>
+      @foreach(Person person in Model.Persons){
+                <tr>
+                    <td>
+                       @person.Name
+                    </td>
+                    <td>
+                        @person.JopTitle
+                    </td>
+                </tr>
+      }
+     
   </tbody>
 </table>
 </div>
