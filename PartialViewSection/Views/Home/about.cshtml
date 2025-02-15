@@ -1,0 +1,63 @@
+﻿<h1>About</h1>
+
+@* return a page Content *@
+
+@* @{
+    var MyViewData = new ViewDataDictionary(ViewData);
+
+    MyViewData["ListTitle"] = "Countries";
+    MyViewData["ListItems"] = new List<string>()
+            {
+                "Egypt",
+                "Germany",
+                "Italy",
+                "Saudi Arabia",
+                "Libia",
+            };
+
+} *@
+
+@* <div class="box">
+    <h2>Partial View</h2>
+    <partial name="_ListPartialView" view-data="MyViewData"></partial>
+</div>
+ *@
+@* <div class="box">
+    <h2>Partial Async</h2>
+    @await Html.PartialAsync("_ListPartialView");
+</div>
+ *@
+
+
+@* @{
+    ListModel myList = new ListModel()
+            {
+                ListTitle = "Programming Languages",
+                ListItems = new List<string>()
+            {
+                "C#",
+                "Python",
+                "Java",
+                "Java script",
+                "Ruby",
+                "C++",
+                "C",
+            }
+            };
+} *@
+
+<button class="button button-blue-back" id="display-button" type="button">
+    Display Languages </button>
+
+    <div class="box programming-lang-list">
+
+    </div>
+
+<script>
+    document.querySelector("#display-button").addEventListener("click", async function(){
+        var response = await fetch("programming-lang-list");
+        var languagesList = await response.text();
+        document.querySelector(".programming-lang-list").innerHTML = languagesList;
+    });
+
+</script>

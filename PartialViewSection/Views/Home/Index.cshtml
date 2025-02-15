@@ -1,0 +1,18 @@
+﻿<h1>Home</h1>
+@{
+    ListModel myList = new ListModel() {
+                ListTitle = "Countries",
+                ListItems = new List<string>()
+            {
+                "Egypt",
+                "Germany",
+                "Italy",
+                "Saudi Arabia",
+                "Libia",
+            }
+            };
+}
+<div class="box">
+    <h3>Strongly Type Partial View</h3>
+    <partial name="_ListPartialView" model="myList"></partial>
+</div>
