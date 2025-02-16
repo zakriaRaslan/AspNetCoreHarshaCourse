@@ -16,7 +16,8 @@
 *@
 
 @*You Can Send Data From View To The ViewComponent like this but must use a parameter in the invoke method *@
-@{
+
+@* @{
     GridPersonModel gridPersonModel = new GridPersonModel()
             {
                 GridTitle = "Persons List",
@@ -28,5 +29,15 @@
                     new Person(){Name="Mostafa" , JopTitle="Mobile Developer"},
                 }
             };
-}
-@await Component.InvokeAsync("Grid",gridPersonModel)
+} *@
+@* @await Component.InvokeAsync("Grid",gridPersonModel) *@
+
+<button class="button button-green-back" id="display-friends-list">Display Friends List</button>
+
+<div id="friends-list">
+
+</div>
+
+<script src="~/friendslist.js">
+
+</script>
