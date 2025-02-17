@@ -1,20 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ServicesLayer;
+using ServicesContract;
 namespace _09_DIsection.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly CitiesService _citiesService;
+        private readonly ICitiesService _citiesService;
 
-       public HomeController()
+       public HomeController(ICitiesService citiesService)
         {
-            _citiesService = new CitiesService();
+            _citiesService = citiesService;
         }
 
         [Route("/")]
         public IActionResult Index()
         {
-            List<string> citites = _citiesService.GetCitites();
+            List<string> citites = _citiesService.GetCities();
             return View(citites);
         }
     }

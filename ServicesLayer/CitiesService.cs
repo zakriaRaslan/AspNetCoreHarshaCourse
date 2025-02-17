@@ -1,6 +1,8 @@
-﻿namespace ServicesLayer
+﻿using ServicesContract;
+
+namespace ServicesLayer
 {
-    public class CitiesService
+    public class CitiesService:ICitiesService
     {
         private List<string> _cities;
         public CitiesService()
@@ -15,7 +17,7 @@
             };
         }
 
-        public List<string> GetCitites() { 
+        public List<string> GetCities() { 
         return _cities;
         }
     }
