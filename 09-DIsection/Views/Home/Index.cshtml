@@ -1,13 +1,26 @@
 ﻿@model IEnumerable<string>
+@*you can inject the sevices to the view directly*@
+@inject ICitiesService cititisService
 @{
-    
+
     ViewBag.Title = "Home";
 }
 
+@{
+    List<string> cititesFromView = cititisService.GetCities();
+}
+
 <h1>Home</h1>
-<h3>List Of Citites</h3>
+<h3>List Of Citites From Controller</h3>
 <ul class="list">
     @foreach(string city in Model)
+    {
+        <li>@city</li>
+    }
+</ul>
+<h3>List Of Citites From View</h3>
+<ul class="list">
+    @foreach (string city in cititesFromView)
     {
         <li>@city</li>
     }
