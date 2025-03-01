@@ -124,5 +124,38 @@ namespace CRUDTests
 
         #endregion
 
+        #region GetById Test Methods
+
+        [Fact]
+        public void GetById_WithNullId()
+        {
+            //Arrang
+             Guid? id = null;
+
+            //Act
+            CountryResponse ResponseFromGetById = _countryService.GetById(id);
+
+            //Assert
+            Assert.Null(ResponseFromGetById);
+        }
+
+        [Fact]
+        public void GetById_WithValidId() 
+        {
+            //Arrang
+            AddCountryRequest addCountryReq = new AddCountryRequest() { Name = "Egypt"};
+
+            CountryResponse responseFromAddCountry = _countryService.Add(addCountryReq);
+            CountryResponse responseFromGetById = _countryService.GetById(responseFromAddCountry.Id);
+
+            //Assert
+            Assert.Equal(responseFromAddCountry, responseFromGetById);
+
+        }
+
+
+        #endregion
+
+
     }
 }

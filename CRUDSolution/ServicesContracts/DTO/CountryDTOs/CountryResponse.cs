@@ -1,5 +1,4 @@
-﻿using Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,17 +10,17 @@ namespace ServicesContracts.DTO.CountryDTOs
     /// <summary>
     /// This is the return type of the most methods in CountryService
     /// </summary>
-    public class CountryResponse
+    public class CountryResponse : CountryBase
     {
         public Guid Id { get; set; }
-        public string? Name { get; set; }
+
 
         public override bool Equals(object? obj)
         {
             if (obj == null)
                 return false;
 
-            if(obj.GetType()!= typeof(CountryResponse)) return false;
+            if (obj.GetType() != typeof(CountryResponse)) return false;
 
             CountryResponse countryToCompare = (CountryResponse)obj;
 
@@ -37,14 +36,6 @@ namespace ServicesContracts.DTO.CountryDTOs
                 hash = hash * 23 + (Name?.GetHashCode() ?? 0); // Null-safe           
                 return hash;
             }
-        }
-    }
-
-    public static class CountryExtensions
-    {
-        public static CountryResponse ToCountryResponse(this Country country)
-        {
-            return new CountryResponse { Id = country.Id, Name = country.Name };
         }
     }
 }

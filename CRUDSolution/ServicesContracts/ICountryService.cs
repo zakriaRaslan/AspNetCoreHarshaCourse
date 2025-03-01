@@ -20,5 +20,7 @@ namespace ServicesContracts
         /// </summary>
         /// <returns>List of countries</returns>
         List<CountryResponse> GetAllCountries();
+
+        CountryResponse? GetById (Guid? id);
     }
 }

@@ -5,9 +5,9 @@ namespace ServicesContracts.DTO.CountryDTOs
     /// <summary>
     /// Dto Class For Adding A New Country
     /// </summary>
-    public class AddCountryRequest
+    public class AddCountryRequest:CountryBase
     {
-        public string? Name { get; set; }
+        
 
         public Country ToCountry()
         {
