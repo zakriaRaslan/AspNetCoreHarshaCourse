@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/stylesheet.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="navbar-brand">CRUD Demo</div>
+            <ul>
+                <li><a href="~/persons/index">Persons</a></li>
+            </ul>
+        </div>
+        <div class="page-content">
+            @RenderBody()
+        </div>
+    </div>
+
+
+    <script src="https://kit.fontawesome.com/906b2374f5.js" crossorigin="anonymous"></script>
+</body>
+</html>

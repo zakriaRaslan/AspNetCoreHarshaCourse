@@ -12,7 +12,7 @@ namespace CRUDTests
         private readonly ICountryService _countryService;
         public CountryServicesTests()
         {
-            _countryService = new CountryServices();
+            _countryService = new CountryServices(false);
         }
 
         #region AddCountry Test Methods
