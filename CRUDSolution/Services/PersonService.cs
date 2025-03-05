@@ -72,16 +72,23 @@ namespace Services
         {
             if (id == null) throw new ArgumentNullException(nameof(id));
 
-            return _people.FirstOrDefault(p => p.Id == id)?.ToPersonResponse();
+            Person? person = _people.FirstOrDefault(p => p.Id == id);
+
+            if (person == null)
+            {
+                return null;
+            }
+
+            return  ConvertPersonToPersonResponse(person);
         }
 
         public List<PersonResponse> GetAllPersons()
         {
-            return _people.Select(person => person.ToPersonResponse()).ToList();
+            return _people.Select(person => ConvertPersonToPersonResponse(person)).ToList();
         }
 
         public List<PersonResponse> GetFilterdPersons(string searchBy, string? searchFor)
-        {
+        {   
             List<PersonResponse> allPersons = GetAllPersons();
             List<PersonResponse> matchingPersons = allPersons;
 
@@ -195,7 +202,7 @@ namespace Services
             person_from_list.Address = personToUpdate.Address;
             person_from_list.ReceiveNewsLetters = personToUpdate.ReceiveNewsLetters;
 
-            return person_from_list.ToPersonResponse();
+            return ConvertPersonToPersonResponse(person_from_list);
         }
 
         public bool DeleteById(Guid? id)
