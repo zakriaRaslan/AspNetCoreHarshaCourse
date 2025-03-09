@@ -1,5 +1,6 @@
 ﻿using Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Services;
 using ServicesContracts;
 using ServicesContracts.DTO.CountryDTOs;
@@ -54,8 +55,9 @@ namespace CRUDSection.Controllers
         public IActionResult Create()
         {
             List<CountryResponse> list_of_countries = _countryService.GetAllCountries();
-            ViewBag.CountriesList = list_of_countries;
-
+            ViewBag.CountriesList = list_of_countries.Select(c =>
+            new SelectListItem() {Text = c.Name , Value = c.Id.ToString() }
+            );
             return View();
         }
 
@@ -66,7 +68,9 @@ namespace CRUDSection.Controllers
             if (!ModelState.IsValid)
             {
                 List<CountryResponse> countries = _countryService.GetAllCountries();
-                ViewBag.CountriesList = countries;
+                ViewBag.CountriesList = countries.Select(c =>
+            new SelectListItem() { Text = c.Name, Value = c.Id.ToString() }
+            ); ;
 
                 ViewBag.Errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
                 return View();

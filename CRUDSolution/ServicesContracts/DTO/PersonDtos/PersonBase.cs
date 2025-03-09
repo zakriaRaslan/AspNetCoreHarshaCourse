@@ -13,8 +13,10 @@ namespace ServicesContracts.DTO.PersonDtos
         public string? Name { get; set; }
         [Required(ErrorMessage = "The email is required")]
         [EmailAddress(ErrorMessage = "The email must be valid")]
+        [DataType(DataType.EmailAddress)]
         public string? Email { get; set; }
         public string? Address { get; set; }
+        [DataType(DataType.Date)]
         public DateTime? DateOfBirth { get; set; }
         public bool ReceiveNewsLetters { get; set; }
         public Guid? CountryId { get; set; }
