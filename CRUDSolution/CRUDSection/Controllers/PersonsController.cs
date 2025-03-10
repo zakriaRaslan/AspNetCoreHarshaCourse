@@ -24,6 +24,14 @@ namespace CRUDSection.Controllers
             _countryService = countryService;
         }
 
+        private void save_countries_list_to_view_bag_as_SelcetListItem()
+        {
+            List<CountryResponse> list_of_countries = _countryService.GetAllCountries();
+            ViewBag.CountriesList = list_of_countries.Select(c =>
+            new SelectListItem() { Text = c.Name, Value = c.Id.ToString() }
+            );
+        }
+
         [Route("index")]
         [Route("/")]
         public IActionResult Index(string searchBy, string? searchFor, string sortBy = nameof(PersonResponse.Name), SortOrderOption sortOrder = SortOrderOption.ASC)
@@ -54,10 +62,7 @@ namespace CRUDSection.Controllers
         [HttpGet("create")]
         public IActionResult Create()
         {
-            List<CountryResponse> list_of_countries = _countryService.GetAllCountries();
-            ViewBag.CountriesList = list_of_countries.Select(c =>
-            new SelectListItem() {Text = c.Name , Value = c.Id.ToString() }
-            );
+            save_countries_list_to_view_bag_as_SelcetListItem();
             return View();
         }
 
@@ -67,10 +72,8 @@ namespace CRUDSection.Controllers
         {
             if (!ModelState.IsValid)
             {
-                List<CountryResponse> countries = _countryService.GetAllCountries();
-                ViewBag.CountriesList = countries.Select(c =>
-            new SelectListItem() { Text = c.Name, Value = c.Id.ToString() }
-            ); ;
+                save_countries_list_to_view_bag_as_SelcetListItem();
+            
 
                 ViewBag.Errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
                 return View();
@@ -83,5 +86,44 @@ namespace CRUDSection.Controllers
             return RedirectToAction("Index", "Persons");
         }
 
+
+        [HttpGet]
+        [Route("[action]/personId")]
+        public IActionResult Edit(Guid personId)
+        {
+            PersonResponse? personResponse = _personService.GetById(personId);
+            if(personResponse == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            save_countries_list_to_view_bag_as_SelcetListItem();
+            UpdatePersonDto updatePersonDto = personResponse.ToUpdatePersonDto();
+
+            return View(updatePersonDto);
+        }
+
+        [HttpPost]
+        [Route("[action]")]
+        public IActionResult Edit(UpdatePersonDto updatePersonDto) 
+        {
+            PersonResponse? currentPerson = _personService.GetById(updatePersonDto.Id);
+            if (currentPerson == null)
+            {
+                return RedirectToAction(nameof(Index));            
+            }
+            if (ModelState.IsValid) 
+            {
+                PersonResponse updatedPerson = _personService.UpdatePerson(updatePersonDto);
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                save_countries_list_to_view_bag_as_SelcetListItem();
+                ViewBag.Errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                return View();
+            }
+
+        }
     }
 }
